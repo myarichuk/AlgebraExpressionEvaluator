@@ -14,6 +14,8 @@ namespace Calculator
             var input = string.Empty;
             Console.WriteLine("Algebra Expression Evaluator");
             Console.WriteLine("ANTLR4 Parser Demo");
+            Console.WriteLine("Supported operators: + | - | * | ^ ");
+            Console.WriteLine("Type 'q' or 'quit' to exit");
             Console.WriteLine("=============================");
             while (input.ToLower() != "q" && input.ToLower() != "quit")
             {
