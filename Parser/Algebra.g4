@@ -23,15 +23,15 @@ root: expression EOF;
 
 //recusive rule to parse types of expressions we support
 expression:
-	(INTEGER | FLOAT)												#NumberExpression			|
-	'-' num = expression											#NegativeNumberExpression	|
-	num = expression POWER pow = expression							#PowerExpression			|
-	'(' expression ')'												#ParenthesisExpression		|
+	(INTEGER | FLOAT)									#NumberExpression		|
+	'-' num = expression									#NegativeNumberExpression	|
+	num = expression POWER pow = expression							#PowerExpression		|
+	'(' expression ')'									#ParenthesisExpression		|
 
 	//notice that we put handling of multiplication and division first and then addition and substraction
 	//this is needed to establish operator precedence 
 	//In this way, for expression '2 + 3 * 5', first 3*5 will be evaluated and then 'result' + 2
-	left = expression op = (MULTIPLY | DIVIDE) right = expression	#MultOrDivideExpression		|
-	left = expression op = (PLUS | MINUS) right = expression		#PlusOrMinusExpression		
+	left = expression op = (MULTIPLY | DIVIDE) right = expression				#MultOrDivideExpression		|
+	left = expression op = (PLUS | MINUS) right = expression				#PlusOrMinusExpression		
 	;
 
