@@ -9,7 +9,8 @@ MINUS: '-';
 MULTIPLY: '*';
 DIVIDE: '/';
 POWER: '^';
- 
+WS: ' ' -> skip;
+
 //token definition for integer number. Recognizes number of any length
 INTEGER: DIGIT+;
 
@@ -23,10 +24,10 @@ root: expression EOF;
 
 //recusive rule to parse types of expressions we support
 expression:
-	(INTEGER | FLOAT)									#NumberExpression		|
-	'-' num = expression									#NegativeNumberExpression	|
-	num = expression POWER pow = expression							#PowerExpression		|
-	'(' expression ')'									#ParenthesisExpression		|
+	(INTEGER | FLOAT)									#NumberExpression		        |
+	'-' num = expression								#NegativeNumberExpression	    |
+	num = expression POWER pow = expression				#PowerExpression	            |
+	'(' expression ')'									#ParenthesisExpression		    |
 
 	//notice that we put handling of multiplication and division first and then addition and substraction
 	//this is needed to establish operator precedence 
